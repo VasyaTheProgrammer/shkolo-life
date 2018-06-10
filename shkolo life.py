@@ -41,6 +41,9 @@ def use():
     global door
     global shk1
     global shk
+    global b
+    global bi
+    
     
     dp = c.coords(door)
     pp = c.coords(player2)
@@ -49,11 +52,15 @@ def use():
         try:
             c.delete(floor)
             c.delete(shk)
+            c.delete(bi)
             del floor1
             del shk1
+            del b
 ##            floor1 = PhotoImage(file = bgl[1])
 ##            floor = c.create_image(0,0,anchor = NW,image = floor1)
+            
         except:
+            global player
             floor1 = PhotoImage(file = bgl[1])
             floor = c.create_image(0,0,anchor = NW,image = floor1)
             player1 = PhotoImage(file = 'player.gif')
@@ -63,11 +70,18 @@ def use():
             shk1= PhotoImage(file = 'shk.gif')
             shk = c.create_image(400,100,anchor=NW,image=shk1)
             msg.showinfo("WAT?","Что ти туты дилаишь?")
-            msg.showerror("!!!","Тiкай из гхороду!")
-##            
+            msg.showerror("!!!","Тiкай с гхороду!")
+            c.delete(floor)
+            c.delete(shk)
+            del floor1
+            del shk1
+ 
+            c.delete("all")
 
-        
-
+            w.PlaySound('2.wav',w.SND_ASYNC)
+            b = PhotoImage(file = 'b.gif')
+            bi = c.create_image(0,0,anchor=NW,image=b)
+            player2 = c.create_oval(10,10,60,60,fill = 'lime')
         
         
 def control(event):
